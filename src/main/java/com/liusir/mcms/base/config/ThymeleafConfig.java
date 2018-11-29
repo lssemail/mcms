@@ -18,7 +18,6 @@ import java.util.Locale;
  * Created by Administrator on 2018-11-28.
  */
 @Configuration
-@EnableWebMvc
 public class ThymeleafConfig implements ApplicationContextAware {
 
     private ApplicationContext applicationContext;

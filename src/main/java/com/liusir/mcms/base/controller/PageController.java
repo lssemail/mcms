@@ -24,4 +24,10 @@ public class PageController {
 
         return new ModelAndView("index", "data", model);
     }
+
+    @RequestMapping("/main")
+    public ModelAndView main(Model model){
+
+        return new ModelAndView("page/main", "data", model);
+    }
 }
