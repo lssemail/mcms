@@ -3,6 +3,7 @@ package com.liusir.mcms.base.controller;
 import com.liusir.mcms.goods.entity.GoodsEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,5 +30,12 @@ public class PageController {
     public ModelAndView main(Model model){
 
         return new ModelAndView("page/main", "data", model);
+    }
+
+
+    @RequestMapping("/{p}/{page}")
+    public ModelAndView page(@PathVariable String p, @PathVariable String page, Model model){
+
+        return new ModelAndView("page/" + p + "/" + page, "data", model);
     }
 }

@@ -1,5 +1,7 @@
 package com.liusir.mcms.base.bean;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.io.Serializable;
 
 /**
@@ -40,5 +42,14 @@ public class ResultBean<T> implements Serializable {
 
     public void setCode(int code) {
         this.code = code;
+    }
+
+    @Override
+    public String toString() {
+        JSONObject obj = new JSONObject();
+        obj.put("msg", msg);
+        obj.put("code", code);
+        obj.put("data", data);
+        return obj.toString();
     }
 }

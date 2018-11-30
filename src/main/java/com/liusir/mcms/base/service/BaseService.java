@@ -1,5 +1,7 @@
 package com.liusir.mcms.base.service;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.util.List;
 
 /**
@@ -11,7 +13,7 @@ public interface BaseService<E> {
 
     List<E> selectList();
 
-    void insert(E e);
+    Boolean insert(E e);
 
     void update(E e);
 

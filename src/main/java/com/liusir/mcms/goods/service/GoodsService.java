@@ -1,14 +1,11 @@
 package com.liusir.mcms.goods.service;
 
-import org.springframework.stereotype.Service;
+import com.liusir.mcms.base.service.BaseService;
+import com.liusir.mcms.goods.entity.GoodsEntity;
 
 /**
  * Created by Administrator on 2018-11-28.
  */
-@Service
-public class GoodsService {
+public interface GoodsService extends BaseService<GoodsEntity>{
 
-    public boolean get(){
-        return true;
-    }
 }
