@@ -38,4 +38,16 @@ public class PageController {
 
         return new ModelAndView("page/" + p + "/" + page, "data", model);
     }
+
+    @RequestMapping("/main2")
+    public ModelAndView main2(Model model){
+
+        return new ModelAndView("page/main2", "data", model);
+    }
+
+    @RequestMapping("/iframeContent")
+    public ModelAndView iframeContent(Model model){
+
+        return new ModelAndView("page/iframeContent", "data", model);
+    }
 }

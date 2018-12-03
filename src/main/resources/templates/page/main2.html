@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>首页--layui后台管理模板</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+	<link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all" />
+	<!--<link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />-->
+	<link rel="stylesheet" th:href="@{/layui/ext/dtree/dtree.css}" media="all" />
+	<link rel="stylesheet" th:href="@{/layui/ext/dtree/font/iconfont.css}" media="all" />
+	<script type="text/javascript" th:src="@{/layui/ext/dtree/dtree.js}"></script>
+
+</head>
+<body class="childrenBody">
+	<div class="layui-row layui-col-space10" style="margin-top: 10px;">
+
+		<div class="layui-col-lg4">
+			<div style="height: 400px;overflow: auto;">
+				<ul id="iframeTree3" class="dtree" data-id="0"></ul>
+			</div>
+		</div>
+		<div class="layui-col-lg8">
+			<div style="height: 400px; width:100%;overflow: auto;">
+				<iframe src="iframeContent.html" id="iframe_content" name="iframe_content" style="width: 100%;height: 99%;" frameborder="0"></iframe>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+	<script>
+		layui.extend({
+			dtree: '{/}../layui/ext/dtree/dtree'
+		}).use(['element','layer', 'dtree'], function(){
+			var element = layui.element, layer = layui.layer, dtree = layui.dtree, $ = layui.$;
+			dtree.render({
+				elem: "#iframeTree3",
+				url: "../mcms/json/commonTree1.json",
+				icon: "2",
+                method: 'get',
+                useIframe:true,
+                iframe: {
+                    iframeElem: "#iframe_content",  // iframe的ID
+                    iframeUrl: "/page/iframeContent" // iframe路由到的地址
+                }
+            });
+		});
+
+	</script>
+</html>
