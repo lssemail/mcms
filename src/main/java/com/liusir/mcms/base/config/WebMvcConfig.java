@@ -1,9 +1,9 @@
 package com.liusir.mcms.base.config;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
@@ -31,5 +31,14 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     public ResultBeanConverter resultBeanConverter(){
 
         return new ResultBeanConverter();
+    }
+
+    /**
+     * 解决no session 问题
+     * @return
+     */
+    @Bean
+    public OpenEntityManagerInViewFilter openEntityManagerInViewFilter(){
+        return new OpenEntityManagerInViewFilter();
     }
 }

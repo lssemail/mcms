@@ -1,5 +1,7 @@
 package com.liusir.mcms.base.ext.dtree;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,4 +28,77 @@ public class DTree {
     private List<CheckArr> checkArr = new ArrayList<CheckArr>();
     /** 子节点集合*/
     private List<DTree> children = new ArrayList<DTree>();
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    @JsonProperty(value = "isLast")
+    public Boolean isLast() {
+        return isLast;
+    }
+
+    public void setLast(Boolean last) {
+        isLast = last;
+    }
+
+    public String getIconClass() {
+        return iconClass;
+    }
+
+    public void setIconClass(String iconClass) {
+        this.iconClass = iconClass;
+    }
+
+    public Object getBasicData() {
+        return basicData;
+    }
+
+    public void setBasicData(Object basicData) {
+        this.basicData = basicData;
+    }
+
+    public List<CheckArr> getCheckArr() {
+        return checkArr;
+    }
+
+    public void setCheckArr(List<CheckArr> checkArr) {
+        this.checkArr = checkArr;
+    }
+
+    public List<DTree> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<DTree> children) {
+        this.children = children;
+    }
 }

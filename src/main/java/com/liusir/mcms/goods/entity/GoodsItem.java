@@ -18,7 +18,7 @@ public class GoodsItem extends BaseModel {
     @Column
     private String name;
     @Column
-    private String cid;
+    private Long cid;
     @Column
     private String unit;
     /**
@@ -40,6 +40,15 @@ public class GoodsItem extends BaseModel {
     @Column
     private String note;
 
+    @Column
+    private String tags;
+
+    /**
+     * 检索关键字
+     */
+    @Column
+    private String keyWord;
+
     public Long getPid() {
         return pid;
     }
@@ -56,11 +65,11 @@ public class GoodsItem extends BaseModel {
         this.name = name;
     }
 
-    public String getCid() {
+    public Long getCid() {
         return cid;
     }
 
-    public void setCid(String cid) {
+    public void setCid(Long cid) {
         this.cid = cid;
     }
 
@@ -102,5 +111,21 @@ public class GoodsItem extends BaseModel {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public String getKeyWord() {
+        return keyWord;
+    }
+
+    public void setKeyWord(String keyWord) {
+        this.keyWord = keyWord;
     }
 }

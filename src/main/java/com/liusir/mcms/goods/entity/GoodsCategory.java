@@ -24,6 +24,16 @@ public class GoodsCategory extends BaseModel {
     @Column
     private Integer level;
 
+    private Boolean last;
+
+    public Boolean getLast() {
+        return last;
+    }
+
+    public void setLast(Boolean last) {
+        this.last = last;
+    }
+
     public String getName() {
         return name;
     }

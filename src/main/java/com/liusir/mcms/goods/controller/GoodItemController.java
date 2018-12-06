@@ -3,37 +3,29 @@ package com.liusir.mcms.goods.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.liusir.mcms.base.bean.ResultBean;
 import com.liusir.mcms.goods.entity.GoodsEntity;
-import com.liusir.mcms.goods.service.GoodsService;
+import com.liusir.mcms.goods.entity.GoodsItem;
+import com.liusir.mcms.goods.service.GoodsItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
-
 /**
  * Created by Administrator on 2018-11-28.
  */
 @Controller
-@RequestMapping("/goods")
-public class GoodController {
+@RequestMapping("/goodItemController")
+public class GoodItemController {
 
     @Autowired
-    GoodsService goodsService;
+    GoodsItemService service;
 
-    @RequestMapping("/index")
+    @RequestMapping("/insert")
     @ResponseBody
-    public ResultBean<List<GoodsEntity>> index(){
+    public ResultBean<Boolean> insert(@RequestBody GoodsItem goodsItem){
 
-        return new ResultBean<>(goodsService.selectList());
-    }
-
-    @RequestMapping("/add")
-    @ResponseBody
-    public ResultBean<Boolean> add(@RequestBody GoodsEntity goodsEntity){
-
-        return new ResultBean<>(goodsService.insert(goodsEntity));
+        return new ResultBean<>(service.insert(goodsItem));
     }
 
     @RequestMapping("/test")
