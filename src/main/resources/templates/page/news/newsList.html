@@ -66,6 +66,30 @@
 		</table>
 	</div>
 	<div id="page"></div>
+
+	<script id="demo" type="text/html">
+		{{#  layui.each(d, function(index, item){ }}
+			<tr>
+				<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>
+				<td align="left">{{item.newsName}}</td>
+				<td>{{item.newsAuthor}}</td>
+				{{#  if(item.newsStatus == "待审核"){ }}
+					<td style="color:#f00">{{item.newsStatus}}</td>;
+				{{#  } else { }}
+					<td >{{item.newsStatus}}</td>;
+				{{#  } }}
+				<td>{{item.newsLook}}</td>
+				<!--<td>开放浏览</td>-->
+				<td><input type="checkbox" name="show" lay-skin="switch" lay-text="是|否" lay-filter="isShow"></td>
+				<td>2017-04-14</td>
+				<td>
+					<a class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 编辑</a>
+					<a class="layui-btn layui-btn-normal layui-btn-mini news_collect"><i class="layui-icon">&#xe600;</i> 收藏</a>
+					<a class="layui-btn layui-btn-danger layui-btn-mini news_del" data-id="1"><i class="layui-icon">&#xe640;</i> 删除</a>
+				</td>
+			</tr>
+		{{#  }); }}
+	</script>
 	<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
 	<script type="text/javascript" th:src="@{/mcms/js/newsList.js}"></script>
 </body>

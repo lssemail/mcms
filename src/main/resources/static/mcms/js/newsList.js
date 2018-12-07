@@ -1,9 +1,9 @@
 layui.config({
-	base : "js/"
-}).use(['form','layer','jquery','laypage'],function(){
+	base : "/mcms/js/"
+}).use(['form','layer','jquery','laypage', 'laytpl'],function(){
 	var form = layui.form,
 		layer = parent.layer === undefined ? layui.layer : parent.layer,
-		laypage = layui.laypage,
+		laypage = layui.laypage, laytpl = layui.laytpl,
 		$ = layui.jquery;
 
 	//加载页面数据
@@ -282,10 +282,14 @@ layui.config({
 					+  '<a class="layui-btn layui-btn-danger layui-btn-mini news_del" data-id="'+data[i].newsId+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
 			        +'</td>'
 			    	+'</tr>';
+			    	if(i == 0){
+			    		console.log(dataHtml);
+					}
 				}
 			}else{
 				dataHtml = '<tr><td colspan="8">暂无数据</td></tr>';
 			}
+			console.log(dataHtml);
 		    return dataHtml;
 		}
 
@@ -294,14 +298,39 @@ layui.config({
 		if(that){
 			newsData = that;
 		}
-		laypage({
-			cont : "page",
-			pages : Math.ceil(newsData.length/nums),
-			jump : function(obj){
-				$(".news_content").html(renderDate(newsData,obj.curr));
+		// laypage({
+		// 	cont : "page",
+		// 	pages : Math.ceil(newsData.length/nums),
+		// 	jump : function(obj){
+		// 		$(".news_content").html(renderDate(newsData,obj.curr));
+		// 		$('.news_list thead input[type="checkbox"]').prop("checked",false);
+		//     	form.render();
+		// 	}
+		// })
+        laypage.render({
+            elem: 'page',
+			count: Math.ceil(newsData.length/nums),
+			jump: function(obj, first){
+                $(".news_content").html(renderDate(newsData,obj.curr));
 				$('.news_list thead input[type="checkbox"]').prop("checked",false);
-		    	form.render();
-			}
-		})
+				form.render();
+            }
+        });
 	}
+
+	function initPage() {
+        $.get("/mcms/json/newsList.json", function(data){
+            var getTpl = demo.innerHTML,
+				view = document.getElementById('page');
+            laytpl(getTpl).render(data, function(html){
+            	console.log(html);
+                view.innerHTML = html;
+            });
+        })
+    }
+
+    // initPage();
+
 })
+
+
