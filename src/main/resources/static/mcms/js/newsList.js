@@ -109,14 +109,14 @@ layui.config({
 	//添加文章
 	//改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
 	$(window).one("resize",function(){
-		$(".newsAdd_btn").click(function(){
+		$(".add_btn").click(function(){
 			var index = layui.layer.open({
-				title : "添加文章",
+				title : "添加分类",
 				type : 2,
 				content : "newsAdd.html",
 				success : function(layero, index){
 					setTimeout(function(){
-						layui.layer.tips('点击此处返回文章列表', '.layui-layer-setwin .layui-layer-close', {
+						layui.layer.tips('点击此处返回分类列表', '.layui-layer-setwin .layui-layer-close', {
 							tips: 3
 						});
 					},500)
@@ -289,7 +289,6 @@ layui.config({
 			}else{
 				dataHtml = '<tr><td colspan="8">暂无数据</td></tr>';
 			}
-			console.log(dataHtml);
 		    return dataHtml;
 		}
 
@@ -298,15 +297,6 @@ layui.config({
 		if(that){
 			newsData = that;
 		}
-		// laypage({
-		// 	cont : "page",
-		// 	pages : Math.ceil(newsData.length/nums),
-		// 	jump : function(obj){
-		// 		$(".news_content").html(renderDate(newsData,obj.curr));
-		// 		$('.news_list thead input[type="checkbox"]').prop("checked",false);
-		//     	form.render();
-		// 	}
-		// })
         laypage.render({
             elem: 'page',
 			count: Math.ceil(newsData.length/nums),
@@ -317,19 +307,6 @@ layui.config({
             }
         });
 	}
-
-	function initPage() {
-        $.get("/mcms/json/newsList.json", function(data){
-            var getTpl = demo.innerHTML,
-				view = document.getElementById('page');
-            laytpl(getTpl).render(data, function(html){
-            	console.log(html);
-                view.innerHTML = html;
-            });
-        })
-    }
-
-    // initPage();
 
 })
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
 	<title>文章添加--layui后台管理模板</title>
@@ -9,7 +9,7 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+	<link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all" />
 </head>
 <body class="childrenBody">
 	<form class="layui-form">
@@ -75,7 +75,8 @@
 		    </div>
 		</div>
 	</form>
-	<script type="text/javascript" src="../../layui/layui.js"></script>
-	<script type="text/javascript" src="newsAdd.js"></script>
+
+	<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+	<script type="text/javascript" th:src="@{/mcms/js/news/newsAdd.js}"></script>
 </body>
 </html>
