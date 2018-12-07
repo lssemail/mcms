@@ -6,8 +6,13 @@ import com.liusir.mcms.base.ext.dtree.DTreeResponse;
 import com.liusir.mcms.base.ext.dtree.Status;
 import com.liusir.mcms.goods.entity.GoodsCategory;
 import com.liusir.mcms.goods.entity.GoodsEntity;
+import com.liusir.mcms.goods.query.GoodsCategoryQuery;
 import com.liusir.mcms.goods.service.GoodsCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,4 +47,14 @@ public class GoodsCategoryController {
         return response;
     }
 
+
+    @RequestMapping(value = "/page", method = RequestMethod.GET)
+    @ResponseBody
+    public ResultBean<Page<GoodsCategory>> page(int page, int size, GoodsCategoryQuery query){
+
+        page = page < 0 ? 0 : page;
+        size = size < 0 ? 10 : size;
+        Pageable pageable = PageRequest.of(page, size, Sort.Direction.ASC, "position");
+        return new ResultBean<>(service.findAll(pageable, query));
+    }
 }

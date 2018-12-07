@@ -50,4 +50,10 @@ public class PageController {
 
         return new ModelAndView("page/iframeContent", "data", model);
     }
+
+    @RequestMapping("/page/{p}/{page}")
+    public ModelAndView page1(@PathVariable String p, @PathVariable String page, Model model){
+
+        return new ModelAndView("page/" + p + "/" + page, "data", model);
+    }
 }
